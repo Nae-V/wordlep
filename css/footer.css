@@ -1,0 +1,45 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 200px;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.key-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid gray;
+    width: 70px;
+    height: 80px;
+}
+
+#enter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid gray;
+    width: 100px;
+    height: 80px;
+}
+#backspace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid gray;
+    width: 100px;
+    height: 80px;
+}
+.backspace-icon {
+    padding-top: 5px;
+    width: 40px;
+}
