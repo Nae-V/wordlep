@@ -2,15 +2,34 @@ const 정답 = 'APPLE';
 
 let attempts = 0;
 let index = 0;
+let timer;
 
 function appStart() {
+    function displayGameover() {
+        const div = document.createElement('div');
+        div.innerText = '게임이 종료됐다.';
+        div.style = 'display:flex; justify-content:center; align-items:center; position:absolute; background-color:blue; top:50vh; width:100vw; height:30vh;';
+        document.body.appendChild(div);
+    }
+
     function nextLine() {
         attempts++;
         if (attempts === 6) return gameover();
         index = 0;
     }
 
+    function handleBackspace() {
+        if (index > 0) {
+            const preBlock = document.querySelector(`.board-block[data-index='${attempts}${index - 1}']`);
+            preBlock.innerText = '';
+        }
+
+        if (index !== 0) index--;
+    }
+
     function gameover() {
+        displayGameover();
+        clearInterval(timer);
         window.removeEventListener('keydown', handleKeydowm);
     }
 
@@ -41,7 +60,8 @@ function appStart() {
 
         const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
 
-        if (index === 5) {
+        if (event.keyCode === 8) handleBackspace();
+        else if (index === 5) {
             if (event.key === 'Enter') handleEnterKey();
             else return;
         } else if (65 <= keyCode && keyCode <= 90) {
@@ -49,9 +69,29 @@ function appStart() {
             index++;
         }
 
-        // console.log(event.key, event.keyCode);
+        //console.log(event.key, event.keyCode);
     }
 
+    function startTimer() {
+        const 시작_시간 = new Date();
+
+        function setTime() {
+            const 현재_시간 = new Date();
+            const 흐른_시간 = new Date(현재_시간 - 시작_시간);
+
+            const 분 = 흐른_시간.getMinutes().toString().padStart(2, '0');
+            const 초 = 흐른_시간.getSeconds().toString().padStart(2, '0');
+
+            const timeDiv = document.querySelector('.timer');
+
+            timeDiv.innerText = `${분}:${초}`;
+        }
+
+        timer = setInterval(setTime, 1000);
+        console.log(timer);
+    }
+
+    startTimer();
     window.addEventListener('keydown', handleKeydowm);
 }
 
