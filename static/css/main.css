@@ -21,6 +21,11 @@ main {
     border: 3px solid gray;
     width: 80px;
     height: 80px;
+    transition: all 1s ease-in-out;
+}
+
+.board-block.pop {
+    animation: pop 2s ease;
 }
 
 .timer {
@@ -28,4 +33,16 @@ main {
     font-weight: bold;
     padding: 50px;
     padding-bottom: 100px;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

@@ -21,6 +21,15 @@ footer {
     border: 3px solid gray;
     width: 70px;
     height: 80px;
+    transition: all 1s ease-in-out;
+}
+
+.key-block:hover {
+    cursor: pointer;
+}
+
+.key-block:active {
+    animation: pop 0.2s ease-in-out;
 }
 
 #enter {
@@ -42,4 +51,16 @@ footer {
 .backspace-icon {
     padding-top: 5px;
     width: 40px;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
